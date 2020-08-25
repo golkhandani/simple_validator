@@ -1,4 +1,36 @@
 //console.time("VALIDATOR")
+enum SchemaType {
+    string,
+    object,
+    array
+}
+const Required = (value:any) => {
+    if(value) {
+        return {
+            isValid:true,
+            message:"yay"
+        }
+    } else {
+        return {
+            isValid:false,
+            message:"Is Required"
+        }
+    }
+}
+const Alphabet = (value:any) => {
+    if(typeof value == "string") {
+        return {
+            isValid:true,
+            message:"yay"
+        }
+    }
+    else {
+        return {
+            isValid:false,
+            message:"Must be Alphabet"
+        }
+    }
+}
 const Min = (value:string, min:number) =>{
     if(value.length > min) {
         return {
@@ -130,38 +162,7 @@ export class Validator {
         });
     }
 }
-enum SchemaType {
-    string,
-    object,
-    array
-}
-const Required = (value:any) => {
-    if(value) {
-        return {
-            isValid:true,
-            message:"yay"
-        }
-    } else {
-        return {
-            isValid:false,
-            message:"Is Required"
-        }
-    }
-}
-const Alphabet = (value:any) => {
-    if(typeof value == "string") {
-        return {
-            isValid:true,
-            message:"yay"
-        }
-    }
-    else {
-        return {
-            isValid:false,
-            message:"Must be Alphabet"
-        }
-    }
-}
+
 export const Rules1 = {
     'Username': 'Required|Alphabet|Min:3|Max:100',
     'Password': 'Required|Alphabet|Min:3|Max:100',
